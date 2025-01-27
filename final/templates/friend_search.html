@@ -1,0 +1,35 @@
+{%extends "layout.html" %}
+
+{% block title %}
+    Friend-Search
+{% endblock %}
+
+{% block main %}
+ <form action="/friend_search" method = "POST">
+    <input autocomplete="off" autofocus name="query" placeholder="Search for friends" type="search" style="margin-bottom:20px;">
+    <button type = "submit" class="btn btn-sm btn-green"> Search </button>
+  </form>
+
+  <p> Click to add friends: </p>
+
+  {% if alert == True %}
+      <div class="alertmessage-soft">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          {{message}}
+       </div>
+  {% endif %}
+
+  {% if results != None %}
+  <table>
+    {% for friend in results %}
+        <tr>
+          <a href= "/add_friend/{{friend.id}}" data-username="{{friend.username}}"> {{friend.username}} </a> </li>
+        </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+
+
+
+{% endblock %}

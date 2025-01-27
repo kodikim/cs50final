@@ -1,0 +1,27 @@
+{%extends "layout.html" %}
+
+{% block title %}
+    Shelves
+{% endblock %}
+
+{% block main %}
+    {%if bookshelves != {} %}
+    <div class = "box-container">
+        {% for shelf, books in bookshelves.items() %}
+        <div class="box">
+            <h3 class = "shelf-name"> {{shelf}} </h3>
+            {% for book in books %}
+                <a href="/book/{{book['book_id']}}">
+                <img class="thumbnail" src="{{book['cover_url']}}">
+                </a>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    {%else%}
+        No shelves found. Get started <a href="/search" > here.</a>
+    {%endif%}
+
+
+
+{% endblock %}

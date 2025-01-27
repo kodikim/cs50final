@@ -1,0 +1,16 @@
+{%extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+     <h1 style="font-family: courier new; font-weight: 500; color: #608768" > Welcome to Bookish! </h1>
+     <p> On Bookish, you can make virtual bookshelves for all of your favorite (or least favorite) books. You can also connect with other users and see their own collections of books. </p>
+     <p> To get started, navigate to the search tab and search for a book. Happy reading! </p>
+     <p style ="font-size: 10px" > You are currently logged in as {{user}}</p>
+     <img  style = "width: 50vw; margin-bottom: 5px; align:center; " src= "https://static01.nyt.com/images/2022/10/31/opinion/30paul1/30paul1-superJumbo.jpg" alt="picture of bookshelves">
+     <p style= "margin-bottom:5px;" > Data provided by <a href="https://openlibrary.org/"> Open Library API </a> , Image from <a href="https://www.nytimes.com/2022/10/30/opinion/dark-academia-halloween.html"> The New York Times </a></p>
+     <p> Author: Kodi Kim, 2024 </p>
+</main>
+{% endblock %}

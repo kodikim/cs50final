@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+
+    <form action="/search" method = "POST">
+    <input autocomplete="off" autofocus name="query" placeholder="Search for books" type="search" style="margin-bottom:20px;">
+    <button type = "submit" class="btn btn-primary btn-sm btn-green"> Search </button>
+    </form>
+        {%if results ==["none"] or results == []%}
+            <div class="alertmessage-soft">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                No results found.
+            </div>
+
+
+
+        {%elif results%}
+            <div class="d-grid gap-2 image-button">
+                {% for book in results %}
+                    <a href="/book/{{ book['book_id']}}" class="btn btn-outline-dark" type="button">
+                    <img class="thumbnail" src="{{book['cover_url']}}" alt="{{book['title']}}"> <span class="search-text">{{book["title"]}} - {{book["author"]}} ({{book['year']}})</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+
+    <!-- <input autocomplete="off" autofocus placeholder="Query" type="search">
+
+    <ul></ul>
+
+    <script>
+        let input = document.querySelector('input');
+        input.addEventListener('input', async function(){
+            let response = await fetch('/search?q=' + input.value);
+            let books = await response.text();
+            document.querySelector('ul').innerHTML = books;
+        });
+
+    </script> -->
+
+{% endblock %}

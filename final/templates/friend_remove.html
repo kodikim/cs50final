@@ -1,0 +1,30 @@
+{%extends "layout.html" %}
+
+{% block title %}
+    Remove Friends
+{% endblock %}
+
+{% block main %}
+    {% if not friends %}
+    <p> No friends found. </p>
+    {% else %}
+    <h3 style = "color: #b0303a;"> Click to remove friend: </h3>
+    <table>
+        {% for friend in friends%}
+            <tr>
+                <td class="center"> <a href = "/deleted_friend/{{friend['id']}}">{{friend['username']}} </a> </td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+
+    {% if alert == True %}
+      <div class="alertmessage-soft">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          {{message}}
+       </div>
+  {% endif %}
+
+
+{% endblock %}

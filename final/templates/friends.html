@@ -1,0 +1,52 @@
+{%extends "layout.html" %}
+
+{% block title %}
+    Friends
+{% endblock %}
+
+{% block main %}
+    {% if not friends %}
+    <p> No friends found. </p>
+    {% else %}
+
+    <div class = "box-container">
+    <div class="box">
+    <h3> Your Friends: </h3>
+    <p> Click to see profiles </p>
+    <table>
+        {% for friend in friends%}
+            <tr>
+                <td class="center"> <a href="/friend_profile/{{friend['id']}}">{{friend['username']}}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    </div>
+    </div>
+
+    <a href="/friend_search" class="btn btn-green" type="button">
+    <span class="search-text">Find New Friends</span>
+    </a>
+
+    <a href="/delete_friend" class="btn btn-green" type="button">
+    <span class="search-text">Remove Friends</span>
+    </a>
+
+    <div class = "box-container">
+    <div class="box">
+    <h3 style = "margin-top: 20px; font-size: 20px;" > People that have friended you: </h3>
+    <p> Click to see profiles </p>
+    <table>
+        {% for other in others%}
+            <tr>
+                <td class="center"> <a href="/friend_profile/{{other['id']}}">{{other['username']}}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% if not friends %}
+    <p> None found. </p>
+    {% endif %}
+    </div>
+    </div>
+{% endblock %}

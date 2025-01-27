@@ -1,0 +1,29 @@
+{%extends "layout.html" %}
+
+{% block title %}
+    Friend Profile
+{% endblock %}
+
+{% block main %}
+<h1> {{friend}}'s bookshelves: </h1>
+
+    {%if bookshelves != None %}
+    <div class = "box-container">
+        {% for shelf, books in bookshelves.items() %}
+        <div class="box">
+            <h3> {{shelf}} </h3>
+            {% for book in books %}
+            <a href="/book/{{book['book_id']}}">
+            <img class="thumbnail" src="{{book['cover_url']}}">
+            </a>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    {%else%}
+        No shelves found.
+    {%endif%}
+
+
+
+{% endblock %}
